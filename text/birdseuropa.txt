@@ -1,0 +1,524 @@
+Roodkeelduiker
+Parelduiker
+IJsduiker
+Geelsnavelduiker
+Dodaars
+Fuut
+Roodhalsfuut
+Kuifduiker
+Geoorde fuut
+Dikbekfuut
+Noordse stormvogel
+Kuhls pijlstormvogel
+Grote pijlstormvogel
+Grauwe pijlstormvogel
+Noordse pijlstormvogel
+Vale pijlstormvogel
+Yelkouanpijlstormvogel
+Kleine pijlstormvogel
+Stormvogeltje
+Wilsons stormvogeltje
+Madeirastormvogeltje
+Vaal stormvogeltje
+Roze pelikaan
+Kroeskoppelikaan
+Jan-van-gent
+Aalscholver
+Kuifaalscholver
+Dwergaalscholver
+Roerdomp
+Wouwaap
+Kwak (vogel)
+Koereiger
+Ralreiger
+Kleine zilverreiger
+Grote zilverreiger
+Westelijke rifreiger
+Blauwe reiger
+Purperreiger
+Ooievaar
+Zwarte ooievaar
+Lepelaar
+Zwarte ibis
+Flamingo
+Knobbelzwaan
+Wilde zwaan
+Kleine zwaan
+Kolgans
+Rietgans
+Kleine rietgans
+Grauwe gans
+Sneeuwgans
+Dwerggans
+Canadese gans
+Brandgans
+Rotgans
+Roodhalsgans
+Bergeend
+Casarca
+Nijlgans
+Mandarijneend
+Carolina-eend
+Wilde eend
+Krakeend
+Zwarte eend
+Pijlstaart (vogel)
+Slobeend
+Smient
+Amerikaanse smient
+Wintertaling
+Zomertaling
+Blauwvleugeltaling
+Marmereend
+Tafeleend
+Witoogeend
+Ringsnaveleend
+Toppereend
+Kleine toppereend
+Kuifeend
+Eider (vogel)
+Brileider
+Koningseider
+Stellers eider
+Zwarte zee-eend
+Grote zee-eend
+Brilzee-eend
+Krooneend
+Harlekijneend
+IJseend
+Brilduiker
+IJslandse brilduiker
+Nonnetje (vogel)
+Grote zaagbek
+Middelste zaagbek
+Rosse stekelstaart
+Witkopeend
+Lammergier
+Vale gier
+Monniksgier
+Aasgier
+Oorgier
+Europese zeearend
+Steenarend
+Keizerarend
+Spaanse keizerarend
+Schreeuwarend
+Bastaardarend
+Steppearend
+Slangenarend
+Dwergarend
+Havikarend
+Rode wouw
+Zwarte wouw
+Grijze wouw
+Bruine kiekendief
+Blauwe kiekendief
+Grauwe kiekendief
+Steppekiekendief
+Ruigpootbuizerd
+Buizerd
+Arendbuizerd
+Wespendief
+Sperwer (vogel)
+Balkansperwer
+Havik (vogel)
+Visarend
+Torenvalk
+Kleine torenvalk
+Boomvalk
+Slechtvalk (vogel)
+Smelleken
+Roodpootvalk
+Eleonora's valk
+Giervalk
+Sakervalk
+Lannervalk
+Moerassneeuwhoen
+Alpensneeuwhoen
+Auerhoen
+Korhoen
+Hazelhoen
+Rode patrijs
+Steenpatrijs
+Barbarijse patrijs
+Aziatische steenpatrijs
+Patrijs (vogel)
+Kwartel
+Gestreepte vechtkwartel
+Fazant
+Ladyamherstfazant
+Goudfazant
+Kwartelkoning
+Waterral
+Porseleinhoen
+Waterhoen
+Klein waterhoen
+Kleinst waterhoen
+Meerkoet
+Knobbelmeerkoet
+Purperkoet
+Kraanvogel (vogel)
+Jufferkraanvogel
+Grote trap
+Kleine trap
+Scholekster
+Kluut
+Steltkluut
+Griel
+Senegalese griel
+Renvogel
+Vorkstaartplevier
+Steppevorkstaartplevier
+Oosterse vorkstaartplevier
+Kleine plevier
+Bontbekplevier
+Strandplevier
+Morinelplevier
+Amerikaanse bontbekplevier
+Killdeerplevier
+Mongoolse plevier
+Woestijnplevier
+Kaspische plevier
+Zilverplevier
+Goudplevier
+Aziatische goudplevier
+Amerikaanse goudplevier
+Kievit
+Sporenkievit
+Steppekievit
+Witstaartkievit
+Breedbekstrandloper
+Terekruiter
+Kanoet
+Grote kanoet
+Drieteenstrandloper
+Roodkeelstrandloper
+Bonte strandloper
+Krombekstrandloper
+Temmincks strandloper
+Kleine strandloper
+Grijze strandloper
+Alaskastrandloper
+Kleinste strandloper
+Taigastrandloper
+Gestreepte strandloper
+Siberische strandloper
+Paarse strandloper
+Bairds strandloper
+Bonapartes strandloper
+Steltstrandloper
+Steenloper
+Oeverloper (vogel)
+Amerikaanse oeverloper
+Blonde ruiter
+Bosruiter
+Amerikaanse bosruiter
+Witgat
+Tureluur
+Zwarte ruiter (vogel)
+Groenpootruiter
+Grote geelpootruiter
+Kleine geelpootruiter
+Poelruiter
+Bartrams ruiter
+Grutto
+Rosse grutto
+Wulp
+Regenwulp
+Houtsnip
+Grote grijze snip
+Watersnip
+Poelsnip
+Bokje
+Rosse franjepoot
+Grauwe franjepoot
+Grote franjepoot
+Kemphaan
+Grote jager
+Middelste jager
+Kleine jager
+Kleinste jager
+Kokmeeuw
+Kleine kokmeeuw
+Dunbekmeeuw
+Lachmeeuw
+Franklins meeuw
+Stormmeeuw
+Ringsnavelmeeuw
+Reuzenzwartkopmeeuw
+Zwartkopmeeuw
+Zilvermeeuw
+Audouins meeuw
+Geelpootmeeuw
+Grote mantelmeeuw
+Kleine mantelmeeuw
+Dwergmeeuw
+Grote burgemeester
+Kleine burgemeester
+Drieteenmeeuw
+Vorkstaartmeeuw
+Ivoormeeuw
+Ross' meeuw
+Dwergstern
+Grote stern
+Bengaalse stern
+Lachstern
+Visdief
+Forsters stern
+Noordse Stern
+Dougalls stern
+Reuzenstern
+Koningsstern
+Bonte stern
+Brilstern
+Zwarte stern
+Witwangstern
+Witvleugelstern
+Kleine alk
+Papegaaiduiker
+Zwarte zeekoet
+Zeekoet
+Kortbekzeekoet
+Alk
+Zwartbuikzandhoen
+Witbuikzandhoen
+Rotsduif
+Holenduif
+Houtduif
+Turkse tortel
+Zomertortel
+Halsbandparkiet
+Monniksparkiet
+Koekoek (vogel)
+Kuifkoekoek
+Geelsnavelkoekoek
+Bosuil
+Laplanduil
+Oeraluil
+Oehoe
+Ruigpootuil
+Ransuil
+Velduil
+Steenuil
+Dwergooruil
+Sneeuwuil
+Sperweruil
+Dwerguil
+Kerkuil
+Nachtzwaluw
+Moorse nachtzwaluw
+Gierzwaluw
+Vale gierzwaluw
+Alpengierzwaluw
+Kaffergierzwaluw
+Huisgierzwaluw
+IJsvogel
+Bijeneter
+Scharrelaar
+Hop (vogel)
+Zwarte specht
+Groene specht
+Grijskopspecht
+Witrugspecht
+Grote bonte specht
+Syrische bonte specht
+Middelste bonte specht
+Kleine bonte specht
+Drieteenspecht
+Draaihals
+Veldleeuwerik
+Duponts leeuwerik
+Kuifleeuwerik
+Theklaleeuwerik
+Boomleeuwerik
+Kortteenleeuwerik
+Kleine kortteenleeuwerik
+Kalanderleeuwerik
+Strandleeuwerik
+Oeverzwaluw
+Rotszwaluw
+Boerenzwaluw
+Roodstuitzwaluw
+Huiszwaluw
+Duinpieper
+Grote pieper
+Mongoolse pieper
+Waterpieper
+Oeverpieper
+Graspieper
+Boompieper
+Siberische boompieper
+Roodkeelpieper
+Petsjorapieper
+Witte kwikstaart
+Gele kwikstaart
+Citroenkwikstaart
+Grote gele kwikstaart
+Winterkoning
+Waterspreeuw
+Pestvogel
+Heggenmus
+Alpenheggemus
+Roodborst
+Nachtegaal
+Noordse nachtegaal
+Blauwborst
+Gekraagde roodstaart
+Zwarte roodstaart
+Rosse waaierstaart
+Blauwstaart
+Tapuit
+Blonde tapuit
+Zwarte tapuit
+Izabeltapuit
+Roodborsttapuit
+Paap
+Blauwe rotslijster
+Rode rotslijster
+Grijswangdwerglijster
+Goudlijster
+Siberische lijster
+Zanglijster
+Bruine- enNaumanns lijster
+Koperwiek
+Vale lijster
+Grote lijster
+Kramsvogel
+Merel
+Rood- enZwartkeellijster
+Beflijster
+Tuinfluiter
+Sperwergrasmus
+Zwartkop
+Kleine zwartkop
+Braamsluiper
+Orpheusgrasmus
+Rüppels grasmus
+Cyprusgrasmus
+Grasmus
+Brilgrasmus
+Baardgrasmus
+Provençaalse grasmus
+Sardijnse grasmus
+Grote karekiet
+Kleine karekiet
+Rietzanger
+Waterrietzanger
+Zwartkoprietzanger
+Bosrietzanger
+Struikrietzanger
+Veldrietzanger
+Waaierstaartrietzanger
+Sprinkhaanzanger
+Kleine sprinkhaanzanger
+Krekelzanger
+Snor (vogel)
+Cetti's zanger
+Griekse spotvogel
+Grote vale spotvogel
+Vale spotvogel
+Spotvogel
+Kleine spotvogel
+Orpheusspotvogel
+Noordse boszanger
+Pallas' boszanger
+Bruine boszanger
+Raddes boszanger
+Tjiftjaf
+Fitis
+Grauwe fitis
+Bladkoning
+Humes bladkoning
+Fluiter (vogel)
+Bergfluiter
+Goudhaan
+Vuurgoudhaan
+Grauwe vliegenvanger
+Kleine vliegenvanger
+Bonte vliegenvanger
+Withalsvliegenvanger
+Balkanvliegenvanger
+Koolmees
+Pimpelmees
+Azuurmees
+Zwarte mees
+Kuifmees
+Matkop
+Bruinkopmees
+Rouwmees
+Glanskop
+Staartmees
+Baardman
+Buidelmees
+Boomklever
+Corsicaanse boomklever
+Rotsklever
+Rotskruiper
+Taigaboomkruiper
+Boomkruiper
+Grauwe klauwier
+Daurische klauwier
+Roodkopklauwier
+Maskerklauwier
+Klapekster
+Kleine klapekster
+Wielewaal (vogel)
+Ekster
+Blauwe ekster
+Vlaamse gaai
+Taigagaai
+Notenkraker (vogel)
+Alpenkraai
+Alpenkauw
+Kauw
+Roek
+Zwarte kraai
+Raaf (vogel)
+Spreeuw
+Roze spreeuw
+Zwarte spreeuw
+Huismus
+Spaanse mus
+Ringmus
+Rotsmus
+Sneeuwvink
+Roodoogvireo
+Zwartkopzanger
+Geelstuitzanger
+Vink (vogel)
+Keep (vogel)
+Kneu
+Frater (vogel)
+Barmsijs
+Witstuitbarmsijs
+Putter
+Groenling
+Sijs
+Citroensijs
+Europese kanarie
+Goudvink
+Appelvink
+Haakbek
+Witbandkruisbek
+Kruisbek
+Schotse kruisbek
+Grote kruisbek
+Roodmus
+Rietgors
+Bosgors
+Dwerggors
+Ortolaan
+Bruinkeelortolaan
+Witkopgors
+Geelgors
+Zwartkopgors
+Wilgengors
+Cirlgors
+Grijze gors
+Sneeuwgors
+Witkeelgors
+IJsgors
+Grauwe gors
+Roodborstkardinaal
+Grijze junco
+Bobolink
