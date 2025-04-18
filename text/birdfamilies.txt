@@ -26,3 +26,9 @@ valk
 vliegenvanger
 zanger
 zwaluw
+strandloper
+mees
+stormvogel
+klauwier
+nachtegaal
+parkiet
