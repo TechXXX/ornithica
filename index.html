@@ -255,7 +255,7 @@
       <div id="inline-trophies" style="display: flex; width: 100%; justify-content: space-between; margin-top: 24px;"></div>
     </div>
   </div>
-  <button id="cheat-button" style="margin: 20px auto 0 auto; padding: 10px 20px; font-size: 0.9em; background: #222; color: #fff; border: 2px solid #555; border-radius: 8px; cursor: pointer; display: none;">Cheat: Auto-Win</button>
+  <!-- <button id="cheat-button" style="margin: 20px auto 0 auto; padding: 10px 20px; font-size: 0.9em; background: #222; color: #fff; border: 2px solid #555; border-radius: 8px; cursor: pointer; display: none;">Cheat: Auto-Win</button> -->
   <div id="progress-container" style="width: 100%; max-width: 500px; margin: 30px auto 20px auto; display: none;">
     <div id="progress-bar" style="height: 24px; background: #333; border-radius: 8px; overflow: hidden;">
       <div id="progress-fill" style="height: 100%; width: 0; background: #4aa3df; transition: width 0.2s;"></div>
@@ -306,7 +306,8 @@
         document.getElementById('trophy-container').style.display = 'none';
         document.getElementById('quiz').style.display = 'block';
         document.getElementById('quiz-heading').style.maxWidth = '10%';
-      document.getElementById('cheat-button').style.display = 'none';
+        const cheatButton = document.getElementById('cheat-button');
+        if (cheatButton) cheatButton.style.display = 'block';
         loadQuestion();
       }
     }
@@ -667,7 +668,11 @@
             text-align: center;
             box-shadow: ${isTrophy ? '0 0 6px rgba(255,215,0,0.4)' : 'none'};
           `;
-          badge.textContent = isTrophy ? `🏆 ${q}` : '\u00A0'; // Non-breaking space for size
+          if (isTrophy) {
+            badge.textContent = `🏆 ${q}`;
+          } else {
+            badge.style.display = 'none';
+          }
           column.appendChild(badge);
         });
  
@@ -676,25 +681,25 @@
     }
     renderTrophyBadges();
 
-    /*
-    document.getElementById('cheat-button').onclick = () => {
-      if (!regionSelected || !lengthSelected || !difficultySelected) {
-        alert('Start the quiz first by selecting region, length, and difficulty.');
-        return;
-      }
-
-      quizState.score = quizLength;
-      quizState.currentIndex = quizLength;
-
-      updateHighscores();
-      renderTrophyBadges();
-
-      document.getElementById('quiz').innerHTML = `
-        <h2>Je score: ${quizState.score} van ${quizLength}</h2>
-        <button onclick="location.reload()" style="margin-top:30px;padding:16px 32px;background:#4aa3df;color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:1.2em;font-weight:bold;box-shadow:0 4px 10px rgba(0,0,0,0.4);transition: background 0.3s;">🎉 Opnieuw spelen 🎉</button>
-      `;
-    };
-    */
+  /*
+  document.getElementById('cheat-button').onclick = () => {
+    if (!regionSelected || !lengthSelected || !difficultySelected) {
+      alert('Start the quiz first by selecting region, length, and difficulty.');
+      return;
+    }
+ 
+    quizState.score = quizLength;
+    quizState.currentIndex = quizLength;
+ 
+    updateHighscores();
+    renderTrophyBadges();
+ 
+    document.getElementById('quiz').innerHTML = `
+      <h2>Je score: ${quizState.score} van ${quizLength}</h2>
+      <button onclick="location.reload()" style="margin-top:30px;padding:16px 32px;background:#4aa3df;color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:1.2em;font-weight:bold;box-shadow:0 4px 10px rgba(0,0,0,0.4);transition: background 0.3s;">🎉 Opnieuw spelen 🎉</button>
+    `;
+  };
+  */
   </script>
   <script>
     function resetHeadingSize() {
