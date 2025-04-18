@@ -237,7 +237,7 @@
       <div class="region-buttons-container">
         <button class="region-button" data-region="europa">Europa</button>
         <button class="region-button" data-region="benelux">Benelux</button>
-        <!-- <button class="region-button" data-region="test">Test</button> -->
+        <button class="region-button" data-region="test">Test</button>
       </div>
     <!-- Removed original quiz-length buttons container -->
     <div class="region-buttons-container" id="length-buttons" style="display: none;">
@@ -512,11 +512,17 @@
       const audio = document.getElementById('bird-audio');
       const video = document.getElementById('bird-video');
 
-      if (media.audio.length) {
-        audio.src = media.audio[0];
+      audio.pause();
+      audio.currentTime = 0;
+      const supportedAudio = media.audio.find(url =>
+        url.endsWith('.mp3') || url.endsWith('.aac') || url.endsWith('.ogg')
+      );
+      if (supportedAudio) {
+        audio.src = supportedAudio;
         audio.load();
         audioContainer.style.display = 'block';
       } else {
+        audio.src = '';
         audioContainer.style.display = 'none';
       }
 
