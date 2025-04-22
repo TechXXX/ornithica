@@ -1,0 +1,307 @@
+body {
+  background: #111;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+/* Header sizing */
+#quiz-heading {
+  transition: max-width 0.3s ease;
+}
+body.custom-quiz-active #quiz-heading {
+  max-width: 10% !important;
+}
+h1 {
+  margin-bottom: 10px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.grid img {
+  width: 100%;
+  max-width: 100%;
+  border: 4px solid #555;
+  border-radius: 6px;
+}
+
+#left-images,
+#right-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#left-images img,
+#right-images img {
+  width: 100%;
+  max-width: 600px;
+}
+
+#left-images:only-child img,
+#right-images:only-child img {
+  width: 100%;
+  max-width: 600px;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.choice {
+  padding: 10px;
+  background: #333;
+  border: 2px solid #666;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1.2em;
+}
+.choice:hover {
+  background: #444;
+}
+.correct {
+  background-color: #2a2;
+  border-color: #5f5;
+}
+body.autoriteit-mode .correct {
+  border-width: 4px;
+}
+.incorrect {
+  background-color: #a22;
+  border-color: #f55;
+}
+#next {
+  margin-top: 20px;
+  padding: 20px 40px;
+  font-size: 1.4em;
+  background: #4aa3df;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+}
+#next:hover {
+  background: #4682b4; /* Steel blue background on hover (darker light blue) */
+  color: #fff; /* White text on hover */
+}
+.region-button {
+  background: #333;
+  color: white;
+  border: 2px solid #555;
+  border-radius: 6px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
+  opacity: 1;
+  transition: all 0.15s ease;
+}
+.region-button:hover {
+  background: #444;
+}
+.region-buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+.choices-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: -30px;
+}
+.quiz-length-button {
+  background: #333;
+  color: white;
+  border: 2px solid #555;
+  border-radius: 6px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
+}
+.quiz-length-button:hover {
+  background: #444;
+}
+.region-button.selected,
+.quiz-length-button.selected,
+.difficulty-button.selected {
+  background: #222;
+  border-color: #888;
+}
+#quiz {
+  display: none;
+}
+.media-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.difficulty-button {
+  background: #444;
+  color: #fff;
+  border: 2px solid #666;
+  border-radius: 12px;
+  width: 100px;
+  aspect-ratio: 3/5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1em;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 0 8px 8px 8px;
+  min-height: unset;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain, auto;
+}
+.difficulty-button:hover,
+.difficulty-button.selected {
+  background-color: #555;
+  border: 3px solid #ffd700;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+.makkelijk-difficulty-button {
+  background: url('images/easy.svg') no-repeat center center, #444 !important;
+  background-size: contain, auto;
+}
+.normaal-difficulty-button {
+  background: url('images/try.svg') no-repeat center center, #444 !important;
+  background-size: contain, auto;
+}
+.moeilijk-difficulty-button {
+  background: url('images/medium.svg') no-repeat center center, #444 !important;
+  background-size: contain, auto;
+}
+.expert-difficulty-button {
+  background: url('images/expert.svg') no-repeat center center, #444 !important;
+  background-size: contain, auto;
+}
+.autoriteit-difficulty-button {
+  background: url('images/autori.svg') no-repeat center center, #444 !important;
+  background-size: contain; /* Changed from contain, auto */
+  background-origin: content-box; /* Added */
+  background-clip: content-box; /* Added */
+}
+.difficulty-section {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 800px; /* Increased max-width further to accommodate 5 buttons */
+}
+@keyframes fadeOutScale {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+@keyframes hopToCenter {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  30% {
+    transform: translateY(-10px) scale(1.1);
+  }
+  60% {
+    transform: translateY(5px) scale(0.95);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes fadeScaleDown {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+.info-button {
+  margin-top: 10px;
+  margin-bottom: 30px; /* Increased margin-bottom */
+  width: 80px; /* Set a fixed width */
+  height: 80px; /* Set a fixed height */
+  background: transparent; /* Remove background color */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex; /* Use flexbox to center content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  align-self: center; /* Center the item within the flex container */
+}
+.info-button img {
+  display: block; /* Remove extra space below image */
+  width: 72px; /* Set image width */
+  height: 72px; /* Set image height */
+  object-fit: contain; /* Ensure the image is contained within the button without distortion */
+}
+.info-button:hover {
+  background: rgba(255, 255, 255, 0.1); /* Add a subtle semi-transparent white background on hover */
+}
+
+/* Modal Content Styling */
+#info-modal > div {
+  position: relative; /* Needed for absolute positioning of close button */
+}
+
+#close-modal {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#close-modal:hover,
+#close-modal:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+#modal-title {
+  margin-top: 0;
+  color: #4aa3df; /* Match next button color */
+}
+
+#modal-content {
+  white-space: pre-wrap; /* Preserve line breaks in info text */
+}
+#manual-answer-input {
+  color: #fff !important; /* Ensure text color is white */
+}
+@keyframes pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(40, 167, 69, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+}
+.pulse-green {
+  animation: pulse-green 1s ease-out;
+}
