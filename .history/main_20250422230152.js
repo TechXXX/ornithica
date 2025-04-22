@@ -423,7 +423,7 @@ function handleManualSubmit() {
     input.style.borderWidth = '3px'; // Make border thicker
     input.style.color = '#28a745';
     const correctSound = document.getElementById('correct-sound');
-    // Volume is now set on page load
+    correctSound.volume = 0.25; // Set volume to 25%
     correctSound.play();
     // Add pulse animation for correct answer
     input.classList.add('pulse-green');
@@ -704,7 +704,7 @@ async function loadQuestion() {
       if (option === current.name) {
         btn.classList.add('correct');
         const correctSound = document.getElementById('correct-sound');
-        // Volume is now set on page load
+        correctSound.volume = 0.25; // Set volume to 25%
         correctSound.play();
         quizState.score++;
       } else {
@@ -909,13 +909,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   if (closeModalSpan) { // Check if element exists
     // Use the globally available closeBirdInfoModal
     closeModalSpan.onclick = closeBirdInfoModal;
-  }
-
-  // Set initial volume for correct sound
-  const correctSoundElement = document.getElementById('correct-sound');
-  if (correctSoundElement) {
-    correctSoundElement.volume = 0.01; // Set volume to 1%
-    console.log(`Initial volume for correct-sound set to: ${correctSoundElement.volume}`);
   }
 });
 

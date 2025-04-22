@@ -914,7 +914,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   // Set initial volume for correct sound
   const correctSoundElement = document.getElementById('correct-sound');
   if (correctSoundElement) {
-    correctSoundElement.volume = 0.01; // Set volume to 1%
+    correctSoundElement.volume = 0.1; // Set volume to 10%
     console.log(`Initial volume for correct-sound set to: ${correctSoundElement.volume}`);
   }
 });

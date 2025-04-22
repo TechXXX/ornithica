@@ -422,9 +422,7 @@ function handleManualSubmit() {
     input.style.borderColor = '#28a745'; // Green border for correct
     input.style.borderWidth = '3px'; // Make border thicker
     input.style.color = '#28a745';
-    const correctSound = document.getElementById('correct-sound');
-    // Volume is now set on page load
-    correctSound.play();
+    document.getElementById('correct-sound').play();
     // Add pulse animation for correct answer
     input.classList.add('pulse-green');
     setTimeout(() => {
@@ -464,7 +462,6 @@ function shuffle(array) {
 }
 
 async function loadQuestion() {
-  document.getElementById('nav-sound').play(); // Play sound when loading next question
   document.getElementById('quiz-heading').style.setProperty('max-width', '10%', 'important'); // Shrink header when question loads
   nextButton.style.display = 'none';
   choicesDiv.innerHTML = '';
@@ -703,13 +700,10 @@ async function loadQuestion() {
       allChoices.forEach(c => c.onclick = null);
       if (option === current.name) {
         btn.classList.add('correct');
-        const correctSound = document.getElementById('correct-sound');
-        // Volume is now set on page load
-        correctSound.play();
+        document.getElementById('correct-sound').play();
         quizState.score++;
       } else {
         btn.classList.add('incorrect');
-        document.getElementById('click-sound').play(); // Play sound for incorrect answer
         const correctBtn = Array.from(allChoices).find(c => c.textContent === current.name);
         if (correctBtn) correctBtn.classList.add('correct');
       }
@@ -909,13 +903,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   if (closeModalSpan) { // Check if element exists
     // Use the globally available closeBirdInfoModal
     closeModalSpan.onclick = closeBirdInfoModal;
-  }
-
-  // Set initial volume for correct sound
-  const correctSoundElement = document.getElementById('correct-sound');
-  if (correctSoundElement) {
-    correctSoundElement.volume = 0.01; // Set volume to 1%
-    console.log(`Initial volume for correct-sound set to: ${correctSoundElement.volume}`);
   }
 });
 
