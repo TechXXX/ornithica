@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ornithica</title>
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+    .grid img {
+      width: 100%;
+      max-width: 100%;
+      border: 4px solid #555;
+      border-radius: 6px;
+    }
+
+    #left-images,
+    #right-images {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #left-images img,
+    #right-images img {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    #left-images:only-child img,
+    #right-images:only-child img {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    .choice {
+      padding: 10px;
+      background: #333;
+      border: 2px solid #666;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 1.2em;
+    }
+    .choice:hover {
+      background: #444;
+    }
+    .correct {
+      background-color: #2a2;
+      border-color: #5f5;
+    }
+    .incorrect {
+      background-color: #a22;
+      border-color: #f55;
+    }
+    #next {
+      margin-top: 20px;
+      padding: 20px 40px;
+      font-size: 1.4em;
+      background: #4aa3df;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #fff;
+    }
+    .region-button {
+      background: #333;
+      color: white;
+      border: 2px solid #555;
+      border-radius: 6px;
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+      width: 120px;
+      text-align: center;
+      opacity: 1;
+      transition: all 0.15s ease;
+    }
+    .region-button:hover {
+      background: #444;
+    }
+    .region-buttons-container {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+    .choices-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: -30px;
+    }
+    .quiz-length-button {
+      background: #333;
+      color: white;
+      border: 2px solid #555;
+      border-radius: 6px;
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+      width: 120px;
+      text-align: center;
+    }
+    .quiz-length-button:hover {
+      background: #444;
+    }
+    .region-button.selected,
+    .quiz-length-button.selected,
+    .difficulty-button.selected {
+      background: #222;
+      border-color: #888;
+    }
+    #quiz {
+      display: none;
+    }
+    .media-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .difficulty-button {
+      background: #444;
+      color: #fff;
+      border: 2px solid #666;
+      border-radius: 12px;
+      width: 100px;
+      aspect-ratio: 3/5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 1em;
+      box-sizing: border-box;
+      text-align: center;
+      padding: 0 8px 8px 8px;
+      min-height: unset;
+      margin: 0 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain, auto;
+    }
+    .difficulty-button:hover,
+    .difficulty-button.selected {
+      background-color: #555;
+      border: 3px solid #ffd700;
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+    }
+    .makkelijk-difficulty-button {
+      background: url('images/easy.svg') no-repeat center center, #444 !important;
+      background-size: contain, auto;
+    }
+    .normaal-difficulty-button {
+      background: url('images/try.svg') no-repeat center center, #444 !important;
+      background-size: contain, auto;
+    }
+    .moeilijk-difficulty-button {
+      background: url('images/medium.svg') no-repeat center center, #444 !important;
+      background-size: contain, auto;
+    }
+    .expert-difficulty-button {
+      background: url('images/expert.svg') no-repeat center center, #444 !important;
+      background-size: contain, auto;
+    }
+    .difficulty-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+  @keyframes fadeOutScale {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+  }
+  @keyframes hopToCenter {
+    0% {
+      transform: translateX(0) scale(1);
+    }
+    30% {
+      transform: translateY(-10px) scale(1.1);
+    }
+    60% {
+      transform: translateY(5px) scale(0.95);
+    }
+    100% {
+      transform: translateX(0) scale(1);
+    }
+  }
+  @keyframes fadeScaleDown {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+  }
+  </style>
+</head>
+<body>
+  <img id="quiz-heading" src="images/orni.svg" alt="Ornithica" style="max-width: 35%; height: auto; transition: all 0.3s ease;" />
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 20px 0;">
+      <div class="region-buttons-container">
+        <button class="region-button" data-region="europa">Europa</button>
+        <button class="region-button" data-region="benelux">Benelux</button>
+        <!-- <button class="region-button" data-region="test">Test</button> -->
+      </div>
+    <!-- Removed original quiz-length buttons container -->
+    <div class="region-buttons-container" id="length-buttons" style="display: none;">
+      <button class="quiz-length-button" data-length="10">10 vragen</button>
+      <button class="quiz-length-button" data-length="20">20 vragen</button>
+      <button class="quiz-length-button" data-length="50">50 vragen</button>
+    </div>
+    <div id="trophy-container" style="display: flex; flex-direction: column; align-items: center; max-width: 600px; margin: 0 auto;">
+      <div class="difficulty-section" style="width: 100%;">
+        <button class="difficulty-button makkelijk-difficulty-button" data-difficulty="1">Makkelijk</button>
+        <button class="difficulty-button normaal-difficulty-button" data-difficulty="2">Normaal</button>
+        <button class="difficulty-button moeilijk-difficulty-button" data-difficulty="3">Moeilijk</button>
+        <button class="difficulty-button expert-difficulty-button" data-difficulty="4">Expert</button>
+      </div>
+      <div id="inline-trophies" style="display: flex; width: 100%; justify-content: space-between; margin-top: 24px;"></div>
+    </div>
+  </div>
+  <!-- <button id="cheat-button" style="margin: 20px auto 0 auto; padding: 10px 20px; font-size: 0.9em; background: #222; color: #fff; border: 2px solid #555; border-radius: 8px; cursor: pointer; display: none;">Cheat: Auto-Win</button> -->
+  <div id="progress-container" style="width: 100%; max-width: 500px; margin: 30px auto 20px auto; display: none;">
+    <div id="progress-bar" style="height: 24px; background: #333; border-radius: 8px; overflow: hidden;">
+      <div id="progress-fill" style="height: 100%; width: 0; background: #4aa3df; transition: width 0.2s;"></div>
+    </div>
+    <div id="progress-text" style="margin-top: 8px; color: #aaa; font-size: 15px;">Laden...</div>
+  </div>
+  <div id="quiz">
+    <div class="grid" id="image-grid">
+      <div id="left-images"></div>
+      <div class="choices-column">
+        <div class="media-container" id="audio-container" style="display:none; margin-bottom: 20px;">
+          <audio id="bird-audio" controls style="margin-top: 8px;"></audio>
+        </div>
+        <div class="media-container" id="video-container" style="display:none; margin-bottom: 20px;">
+          <video id="bird-video" controls crossorigin="anonymous" style="margin-top: 8px; width: 100%; max-width: 640px; height: 360px; object-fit: cover;"></video>
+        </div>
+        <div class="choices" id="choices"></div>
+        <button id="next" style="display:none; margin-top: 20px;">Volgende</button>
+      </div>
+      <div id="right-images"></div>
+    </div>
+  </div>
+  
+  <script>
+    let familySuffixes = [];
+    let quizRegion = 'europa';
+    let quizLength = 20;
+    let quizDifficulty = 2;
+    let regionSelected = false;
+    let lengthSelected = false;
+    let difficultySelected = false;
+
+    const API = 'https://nl.wikipedia.org/w/api.php';
+    const choicesDiv = document.getElementById('choices');
+    const nextButton = document.getElementById('next');
+
+    const quizState = {
+      speciesList: null,
+      currentIndex: 0,
+      score: 0
+    };
+
+    const mediaCache = {};
+
+    function tryStartQuiz() {
+      if (regionSelected && lengthSelected && difficultySelected) {
+        document.querySelectorAll('.region-button, .quiz-length-button, .difficulty-button').forEach(btn => btn.style.display = 'none');
+        document.getElementById('trophy-container').style.display = 'none';
+        document.getElementById('quiz').style.display = 'block';
+        document.getElementById('quiz-heading').style.maxWidth = '10%';
+        const cheatButton = document.getElementById('cheat-button');
+        if (cheatButton) cheatButton.style.display = 'block';
+        loadQuestion();
+      }
+    }
+
+    document.querySelectorAll('.quiz-length-button').forEach(button => {
+      button.onclick = () => {
+        document.querySelectorAll('.quiz-length-button').forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
+        quizLength = parseInt(button.dataset.length, 10);
+        lengthSelected = true;
+
+        const container = document.getElementById('length-buttons');
+        container.style.animation = 'fadeScaleDown 0.4s ease forwards';
+        setTimeout(() => {
+          container.style.display = 'none';
+          tryStartQuiz();
+        }, 400);
+      };
+    });
+
+    document.querySelectorAll('.difficulty-button').forEach(button => {
+      button.onclick = () => {
+        document.querySelectorAll('.difficulty-button').forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
+        quizDifficulty = parseInt(button.dataset.difficulty, 10);
+        difficultySelected = true;
+        tryStartQuiz();
+      };
+    });
+
+    async function resolveRedirect(title) {
+      const url = API + '?' + new URLSearchParams({
+        action: 'query',
+        format: 'json',
+        redirects: '1',
+        origin: '*',
+        titles: title
+      });
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const redirect = data.query.redirects?.[0];
+        return redirect ? redirect.to : title;
+      } catch {
+        return title;
+      }
+    }
+
+    async function fetchMedia(title) {
+      if (mediaCache[title]) return mediaCache[title];
+      const resolvedTitle = await resolveRedirect(title);
+      const api = 'https://nl.wikipedia.org/w/api.php';
+      const params = new URLSearchParams({
+        action: 'query',
+        format: 'json',
+        origin: '*',
+        prop: 'images',
+        titles: resolvedTitle
+      });
+      const res = await fetch(api + '?' + params.toString());
+      const data = await res.json();
+      const pages = Object.values(data.query.pages);
+      const images = pages[0]?.images || [];
+
+      const audio = [];
+      const video = [];
+      const urls = [];
+
+      for (const file of images) {
+        const filename = file.title;
+        const infoParams = new URLSearchParams({
+          action: 'query',
+          format: 'json',
+          origin: '*',
+          titles: filename,
+          prop: 'imageinfo',
+          iiprop: 'url|extmetadata'
+        });
+        const infoRes = await fetch(api + '?' + infoParams.toString());
+        const infoData = await infoRes.json();
+        const filePage = Object.values(infoData.query.pages)[0];
+        const url = filePage.imageinfo?.[0]?.url;
+        if (!url) continue;
+
+        if (/\.(jpe?g|png|gif)$/i.test(url)) {
+          // Filter out maps and icons by filename and caption
+          const rawCaption = filePage.imageinfo?.[0]?.extmetadata?.ImageDescription?.value || '';
+          const caption = rawCaption.replace(/<[^>]*>/g, '').toLowerCase();
+          const isCaptionedMap = /(range|distribution|kaart|verspreiding|habitat|area|status|locatie|map)/i.test(caption);
+          if (
+            !/(kaart|map\b|verspreiding|distribution|range|locatie|verspreidingsgebied|range_map|habitat|locatiekaart|areal|area|status|species_map|statuskaart|IUCN|Vista-kmixdocked|icon|logo|sound_icon)/i.test(filename) &&
+            !isCaptionedMap
+          ) {
+            urls.push(url);
+          }
+        } else if (/\.ogg$/i.test(url)) {
+          audio.push(url);
+        } else if (/\.webm$/i.test(url)) {
+          video.push(url);
+        }
+      }
+
+      const result = { images: urls.slice(0, 4), audio, video };
+      mediaCache[title] = result;
+      return result;
+    }
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    async function loadQuestion() {
+      nextButton.style.display = 'none';
+      choicesDiv.innerHTML = '';
+      document.getElementById('left-images').innerHTML = '';
+      document.getElementById('right-images').innerHTML = '';
+
+      const progressContainer = document.getElementById('progress-container');
+      const progressFill = document.getElementById('progress-fill');
+      const progressText = document.getElementById('progress-text');
+
+      const fullList =
+        quizRegion === 'europa'
+          ? 'text/birdseuropa.txt'
+          : quizRegion === 'benelux'
+          ? 'text/birdsben.txt'
+          : 'text/testbird.txt';
+      if (!quizState.speciesList) {
+        progressContainer.style.display = 'block';
+        progressFill.style.width = '0';
+        progressText.textContent = 'Laden...';
+ 
+        const response = await fetch(fullList);
+        const suffixResponse = await fetch('text/birdfamilies.txt');
+        const suffixText = await suffixResponse.text();
+        familySuffixes = suffixText.split('\n').map(l => l.trim()).filter(Boolean);
+        const text = await response.text();
+        const allSpecies = text.split('\n').map(l => l.trim()).filter(Boolean);
+        quizState.allSpecies = allSpecies;
+        shuffle(allSpecies);
+        quizState.speciesList = [];
+ 
+        // Load just the first species synchronously
+        let firstSpecies;
+        for (let i = 0; i < allSpecies.length; i++) {
+          const name = allSpecies[i];
+          const media = await fetchMedia(name);
+          if (media.images.length > 0 || media.audio.length > 0 || media.video.length > 0) {
+            firstSpecies = name;
+            quizState.speciesList.push(name);
+            break;
+          }
+        }
+ 
+        progressContainer.style.display = 'none';
+ 
+        // Start background loading of the rest
+        (async () => {
+          for (let i = 0; i < allSpecies.length && quizState.speciesList.length < quizLength; i++) {
+            const name = allSpecies[i];
+            if (quizState.speciesList.includes(name)) continue;
+            const media = await fetchMedia(name);
+            if (media.images.length > 0 || media.audio.length > 0 || media.video.length > 0) {
+              quizState.speciesList.push(name);
+            }
+          }
+        })();
+      }
+
+      if (quizState.currentIndex >= quizState.speciesList.length) {
+        setTimeout(() => {
+          updateHighscores();
+          showHighscores();
+          document.getElementById('quiz').innerHTML = `
+            <h2>Je score: ${quizState.score} van ${quizState.currentIndex}</h2>
+          <button onclick="location.reload()" style="margin-top:30px;padding:16px 32px;background:#4aa3df;color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:1.2em;font-weight:bold;box-shadow:0 4px 10px rgba(0,0,0,0.4);transition: background 0.3s;">🎉 Opnieuw spelen 🎉</button>
+          `;
+        }, 100);
+        return;
+      }
+
+      const correctName = quizState.speciesList[quizState.currentIndex];
+      const media = await fetchMedia(correctName);
+      console.log('Media for', correctName, media);
+      const current = { name: correctName, images: media.images };
+      quizState.currentIndex++;
+
+      const left = document.getElementById('left-images');
+      const right = document.getElementById('right-images');
+      media.images.forEach((url, index) => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = current.name;
+        const container = index % 2 === 0 ? left : right;
+        container.appendChild(img);
+      });
+
+      const audioContainer = document.getElementById('audio-container');
+      const videoContainer = document.getElementById('video-container');
+      const audio = document.getElementById('bird-audio');
+      const video = document.getElementById('bird-video');
+
+      audio.pause();
+      audio.currentTime = 0;
+      const supportedAudio = media.audio.find(url =>
+        url.endsWith('.mp3') || url.endsWith('.aac') || url.endsWith('.ogg')
+      );
+      if (supportedAudio) {
+        audio.src = supportedAudio;
+        audio.load();
+        audioContainer.style.display = 'block';
+      } else {
+        audio.src = '';
+        audioContainer.style.display = 'none';
+      }
+
+      if (media.video.length && media.video[0]) {
+        video.crossOrigin = "anonymous";
+        // Remove any existing <source> elements
+        while (video.firstChild) video.removeChild(video.firstChild);
+        // Add new <source>
+        const source = document.createElement('source');
+        source.src = media.video[0];
+        source.type = 'video/webm';
+        video.appendChild(source);
+        // Also set src directly as a fallback
+        video.src = media.video[0];
+        video.load();
+        videoContainer.style.display = 'block';
+      } else {
+        while (video.firstChild) video.removeChild(video.firstChild);
+        video.src = '';
+        videoContainer.style.display = 'none';
+      }
+
+      const options = [current.name];
+      const allAnswers = quizState.allSpecies.filter(n => n !== current.name);
+      
+      // Find similar bird using suffix-based matching
+      const suffixes = familySuffixes;
+      
+      const lowerCurrent = current.name.toLowerCase();
+      const matchSuffix = suffixes.find(suffix => lowerCurrent.includes(suffix));
+      
+      let similarAnswers = [];
+      if (matchSuffix) {
+        similarAnswers = allAnswers.filter(name =>
+          name.toLowerCase().includes(matchSuffix)
+        );
+      }
+      
+      // Remove any duplicates or already used correct answer
+      similarAnswers = similarAnswers.filter(name => name !== current.name);
+      shuffle(similarAnswers);
+      
+      shuffle(allAnswers); // Random fallback pool
+      
+      if (quizDifficulty === 1) {
+        // Easy – all random
+        while (options.length < 4 && allAnswers.length > 0) {
+          options.push(allAnswers.shift());
+        }
+      } else if (quizDifficulty === 2) {
+        // Normal – one similar bird if available
+        if (similarAnswers.length > 0) {
+          options.push(similarAnswers.shift());
+        }
+        while (options.length < 4 && allAnswers.length > 0) {
+          options.push(allAnswers.shift());
+        }
+      } else if (quizDifficulty === 3) {
+        // Hard – two similar birds if available
+        while (similarAnswers.length > 0 && options.length < 3) {
+          options.push(similarAnswers.shift());
+        }
+        while (options.length < 4 && allAnswers.length > 0) {
+          options.push(allAnswers.shift());
+        }
+      } else if (quizDifficulty === 4) {
+        // Expert – fill all remaining options with similar birds
+        while (similarAnswers.length > 0 && options.length < 4) {
+          options.push(similarAnswers.shift());
+        }
+        while (options.length < 4 && allAnswers.length > 0) {
+          options.push(allAnswers.shift());
+        }
+      }
+      
+      shuffle(options);
+
+      options.forEach(option => {
+        const btn = document.createElement('div');
+        btn.className = 'choice';
+        btn.textContent = option;
+        btn.onclick = () => {
+          const allChoices = document.querySelectorAll('.choice');
+          allChoices.forEach(c => c.onclick = null);
+          if (option === current.name) {
+            btn.classList.add('correct');
+            quizState.score++;
+          } else {
+            btn.classList.add('incorrect');
+            const correctBtn = Array.from(allChoices).find(c => c.textContent === current.name);
+            if (correctBtn) correctBtn.classList.add('correct');
+          }
+          nextButton.style.display = 'inline-block';
+        };
+        choicesDiv.appendChild(btn);
+      });
+    }
+
+    nextButton.onclick = loadQuestion;
+    document.querySelectorAll('.region-button').forEach(button => {
+      button.onclick = () => {
+        document.querySelectorAll('.region-button').forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
+        quizRegion = button.dataset.region;
+        regionSelected = true;
+        const container = document.querySelector('.region-buttons-container');
+        container.style.animation = 'fadeScaleDown 0.4s ease forwards';
+        setTimeout(() => {
+          container.style.display = 'none';
+          document.getElementById('length-buttons').style.display = 'flex';
+          tryStartQuiz();
+        }, 400);
+      };
+    });
+    function renderTrophyBadges() {
+      const container = document.getElementById('inline-trophies');
+      container.innerHTML = '';
+ 
+      const difficulties = ['Makkelijk', 'Normaal', 'Moeilijk', 'Expert'];
+      const difficultyIds = [1, 2, 3, 4];
+      const questionCounts = [10, 20, 50];
+      const region = 'europa';
+ 
+      for (let d = 0; d < difficultyIds.length; d++) {
+        const column = document.createElement('div');
+        column.style.cssText = 'display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1;';
+ 
+      questionCounts.forEach(q => {
+          const key = `${region}-${q}-${difficultyIds[d]}`;
+          const value = localStorage.getItem(`highscore-${key}`);
+          const badge = document.createElement('div');
+          const isTrophy = value === '🏆';
+          badge.style.cssText = `
+            padding: 6px 14px;
+            border: 2px ${isTrophy ? 'solid #ffd700' : 'dashed #555'};
+            border-radius: 20px;
+            background: ${isTrophy ? '#222820' : '#181818'};
+            color: ${isTrophy ? '#ffd700' : '#aaa'};
+            font-size: 0.8em;
+            width: 70%;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: ${isTrophy ? '0 0 6px rgba(255,215,0,0.4)' : 'none'};
+          `;
+          if (isTrophy) {
+            badge.textContent = `🏆 ${q}`;
+          } else {
+            badge.style.display = 'none';
+          }
+          column.appendChild(badge);
+        });
+ 
+        container.appendChild(column);
+      }
+    }
+    renderTrophyBadges();
+
+  /*
+  document.getElementById('cheat-button').onclick = () => {
+    if (!regionSelected || !lengthSelected || !difficultySelected) {
+      alert('Start the quiz first by selecting region, length, and difficulty.');
+      return;
+    }
+ 
+    quizState.score = quizLength;
+    quizState.currentIndex = quizLength;
+ 
+    updateHighscores();
+    renderTrophyBadges();
+ 
+    document.getElementById('quiz').innerHTML = `
+      <h2>Je score: ${quizState.score} van ${quizLength}</h2>
+      <button onclick="location.reload()" style="margin-top:30px;padding:16px 32px;background:#4aa3df;color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:1.2em;font-weight:bold;box-shadow:0 4px 10px rgba(0,0,0,0.4);transition: background 0.3s;">🎉 Opnieuw spelen 🎉</button>
+    `;
+  };
+  */
+  </script>
+  <script>
+    function resetHeadingSize() {
+      const heading = document.getElementById('quiz-heading');
+      if (heading) heading.style.maxWidth = '30%';
+    }
+
+    function clearQuizSettings() {
+      localStorage.removeItem('quizRegion');
+      localStorage.removeItem('quizLength');
+      localStorage.removeItem('quizDifficulty');
+    }
+
+    function updateHighscores() {
+      const key = `${quizRegion}-${quizLength}-${quizDifficulty}`;
+      const value = quizState.score === quizState.currentIndex ? '🏆' : `${quizState.score}/${quizState.currentIndex}`;
+      localStorage.setItem(`highscore-${key}`, value);
+    }
+
+    function showHighscores() {
+      const levels = {
+        1: 'Makkelijk',
+        2: 'Normaal',
+        3: 'Moeilijk',
+        4: 'Expert'
+      };
+      let table = '<table style="margin: 30px auto; border-collapse: collapse; color: #fff;">';
+      table += '<tr><th style="padding: 10px; border-bottom: 1px solid #888;">Makkelijk</th><th style="padding: 10px; border-bottom: 1px solid #888;">Normaal</th><th style="padding: 10px; border-bottom: 1px solid #888;">Moeilijk</th><th style="padding: 10px; border-bottom: 1px solid #888;">Expert</th></tr><tr>';
+
+      for (let d = 1; d <= 4; d++) {
+        const key = `europa-10-${d}`;
+        const val = localStorage.getItem(`highscore-${key}`) || '-';
+        table += `<td style="padding: 10px; border: 1px solid #666;">${val}</td>`;
+      }
+
+      table += '</tr></table>';
+      const container = document.createElement('div');
+      container.innerHTML = table;
+      document.body.appendChild(container);
+    }
+  </script>
+</body>
+</html>

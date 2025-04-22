@@ -1,0 +1,38 @@
+<script>
+    const soundToggleButton = document.getElementById('sound-toggle-button');
+    const soundIcon = document.getElementById('sound-icon');
+    let isSoundEnabled = localStorage.getItem('isSoundEnabled') === 'true'; // Load from localStorage
+
+    // Set initial sound icon based on stored setting
+    if (isSoundEnabled) {
+      soundIcon.src = 'images/soundon.svg';
+      soundIcon.alt = 'Sound On';
+    } else {
+      soundIcon.src = 'images/soundoff.svg';
+      soundIcon.alt = 'Sound Off';
+    }
+
+    soundToggleButton.onclick = () => {
+      isSoundEnabled = !isSoundEnabled;
+      localStorage.setItem('isSoundEnabled', isSoundEnabled); // Save to localStorage
+
+      if (isSoundEnabled) {
+        soundIcon.src = 'images/soundon.svg'; // Use the provided soundon.svg
+        soundIcon.alt = 'Sound On';
+        // Re-enable sounds - need to find all audio elements and unmute them
+        document.querySelectorAll('audio').forEach(audio => {
+          audio.muted = false;
+        });
+      } else {
+        soundIcon.src = 'images/soundoff.svg'; // Use the provided soundoff.svg
+        soundIcon.alt = 'Sound Off';
+        // Mute all audio elements
+        document.querySelectorAll('audio').forEach(audio => {
+          audio.muted = true;
+        });
+      }
+    };
+
+    // Also need to handle the case when the quiz ends and the button should be hidden again
+    // This might require modifying the quiz end logic (showHighscores function)
+  </script>
